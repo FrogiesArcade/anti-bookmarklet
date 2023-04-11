@@ -19,5 +19,9 @@
     // This code adds a click event listener to the document object.
     document.addEventListener('click', preventBookmarkletCreation);
   </script>
+  
+  <p>Click the button below to test the bookmarklet:</p>
+  
+  <button onclick="location.href='javascript:document.body.appendChild(document.createElement(\'div\')).innerHTML = \'Hello, world!\'';">Test Bookmarklet</button>
 </body>
 </html>
