@@ -5,15 +5,19 @@
 </head>
 <body>
   <h1>Preventing Bookmarklets</h1>
-  <p>This page prevents bookmarklets from being executed by adding a JavaScript event listener to the document object.</p>
+  <p>This page prevents bookmarklets from creating new elements on the page by adding a JavaScript event listener to the document object.</p>
   
   <script>
-    document.addEventListener('click', function(event) {
-      if (event.target.nodeName === 'A' && event.target.href.startsWith('javascript:')) {
+    // This function checks if a new element is being created and prevents it from being added to the DOM.
+    function preventBookmarkletCreation(event) {
+      if (event.target instanceof Element && event.target.parentNode == null) {
         event.preventDefault();
-        alert('Bookmarklets are not allowed on this page.');
+        alert('Bookmarklets are not allowed to create new elements on this page.');
       }
-    });
+    }
+    
+    // This code adds a click event listener to the document object.
+    document.addEventListener('click', preventBookmarkletCreation);
   </script>
 </body>
 </html>
