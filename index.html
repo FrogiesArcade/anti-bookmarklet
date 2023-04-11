@@ -8,20 +8,17 @@
   <p>This page prevents bookmarklets from creating new elements on the page by adding a JavaScript event listener to the document object.</p>
   
   <script>
-    // This function checks if a new element is being created and prevents it from being added to the DOM.
-    function preventBookmarkletCreation(event) {
-      if (event.target instanceof Element && event.target.parentNode == null) {
-        event.preventDefault();
-        alert('Bookmarklets are not allowed to create new elements on this page.');
-      }
-    }
-    
-    // This code adds a click event listener to the document object.
-    document.addEventListener('click', preventBookmarkletCreation);
+    (() => {
+  const alert = window.alert;
+  window.alert = null;
+  // rest of your script here, referencing `alert`
+})();
+
   </script>
   
   <p>Click the button below to test the bookmarklet:</p>
   
-  <button onclick="location.href='javascript:document.body.appendChild(document.createElement(\'div\')).innerHTML = \'Hello, world!\'';">Test Bookmarklet</button>
+  <button onclick="location.href=javascript:(function(){alert('Hello, world!');})();
+">Test Bookmarklet</button>
 </body>
 </html>
