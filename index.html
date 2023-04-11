@@ -1,10 +1,19 @@
-hi
-
-<script>
-document.addEventListener('click', function(event) {
-  if (event.target.nodeName === 'A' && event.target.href.startsWith('javascript:')) {
-    event.preventDefault();
-    alert('Bookmarklets are not allowed on this page.');
-  }
-});
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prevent Bookmarklets Example</title>
+</head>
+<body>
+  <h1>Preventing Bookmarklets</h1>
+  <p>This page prevents bookmarklets from being executed by adding a JavaScript event listener to the document object.</p>
+  
+  <script>
+    document.addEventListener('click', function(event) {
+      if (event.target.nodeName === 'A' && event.target.href.startsWith('javascript:')) {
+        event.preventDefault();
+        alert('Bookmarklets are not allowed on this page.');
+      }
+    });
+  </script>
+</body>
+</html>
