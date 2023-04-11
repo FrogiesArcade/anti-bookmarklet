@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Prevent Bookmarklets Example</title>
+  <meta charset="UTF-8">
+  <title>Stop javascript: Tag from Bookmarklets</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
 </head>
 <body>
-  <h1>Preventing Bookmarklets</h1>
-  <p>This page prevents bookmarklets from creating new elements on the page by adding a JavaScript event listener to the document object.</p>
-  
-  <script>
-    (() => {
-  const alert = window.alert;
-  window.alert = null;
-  // rest of your script here, referencing `alert`
-})();
-
-  </script>
-  
-  <p>Click the button below to test the bookmarklet:</p>
-  
-  <button onclick="location.href=javascript:(function(){alert('Hello, world!');})();
-">Test Bookmarklet</button>
+  <h1>Stop javascript: Tag from Bookmarklets</h1>
+  <p>This page has a Content Security Policy that only allows scripts to be loaded from the same domain.</p>
 </body>
 </html>
