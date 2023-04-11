@@ -1,0 +1,10 @@
+hi
+
+<script>
+document.addEventListener('click', function(event) {
+  if (event.target.nodeName === 'A' && event.target.href.startsWith('javascript:')) {
+    event.preventDefault();
+    alert('Bookmarklets are not allowed on this page.');
+  }
+});
+</script>
